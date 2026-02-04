@@ -17,9 +17,8 @@ export function BottomNav() {
           return (
             <button
               key={index}
-              className={`flex flex-col items-center gap-1 py-1 px-4 transition-colors ${
-                item.active ? 'text-purple-600' : 'text-gray-500 hover:text-gray-700'
-              }`}
+              className={`flex flex-col items-center gap-1 py-1 px-4 transition-colors ${item.active ? 'text-[#E91E63]' : 'text-gray-500 hover:text-gray-700'
+                }`}
             >
               <Icon className="w-6 h-6" />
               <span className="text-xs font-medium">{item.label}</span>

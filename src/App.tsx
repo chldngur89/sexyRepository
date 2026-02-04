@@ -20,6 +20,18 @@ export interface ContentItem {
 export default function App() {
   const [currentPage, setCurrentPage] = useState<'main' | 'detail'>('main');
   const [selectedContent, setSelectedContent] = useState<ContentItem | null>(null);
+  const [contents, setContents] = useState<ContentItem[]>([]);
+
+  // Import locally to avoid circular dependency issues if any
+  // But ideally should be imported at top level. Let's rely on standard imports.
+
+  React.useEffect(() => {
+    // Dynamic import to avoid issues during SSR or initial load if needed, 
+    // but standard import is fine for client-side React.
+    import('./lib/api').then(({ fetchContents }) => {
+      fetchContents().then(setContents);
+    });
+  }, []);
 
   const handleContentClick = (content: ContentItem) => {
     setSelectedContent(content);
@@ -38,10 +50,10 @@ export default function App() {
         {currentPage === 'main' && (
           <MainPage onContentClick={handleContentClick} />
         )}
-        
+
         {currentPage === 'detail' && selectedContent && (
-          <DetailPage 
-            content={selectedContent} 
+          <DetailPage
+            content={selectedContent}
             onBack={handleBackToMain}
           />
         )}

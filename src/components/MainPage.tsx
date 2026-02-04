@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { StatusBar } from './StatusBar';
+import { HeroBanner } from './HeroBanner';
 import { TopBanner } from './TopBanner';
-import { StripBanner } from './StripBanner';
+import { thumbnailImages } from '../data/mockData'; // Assuming mockData exports this or using mockContents
+import { ThumbnailStrip } from './ThumbnailStrip';
 import { NavigationTabs } from './NavigationTabs';
 import { RankingList } from './RankingList';
 import { HorizontalSection } from './HorizontalSection';
@@ -16,11 +18,15 @@ interface MainPageProps {
 
 export function MainPage({ onContentClick }: MainPageProps) {
   const [activeTab, setActiveTab] = useState<'ranking' | 'new' | 'category' | 'viewed'>('ranking');
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const topRankedContents = mockContents.filter(c => c.rank && c.rank <= 5);
   const freeContents = mockContents.filter(c => c.isFree);
   const discountContents = mockContents.filter(c => c.discount);
   const recommendedContents = mockContents.filter(c => c.category === 'Fantasy' || c.category === 'Sci-Fi');
+
+  // Use first content's images or a default set for the strip
+  const stripImages = mockContents[0]?.images || [];
 
   return (
     <div className="flex flex-col h-screen">
@@ -28,22 +34,28 @@ export function MainPage({ onContentClick }: MainPageProps) {
       <div className="flex-shrink-0">
         <StatusBar />
         <TopBanner />
-        <StripBanner />
+        <HeroBanner />
+        <ThumbnailStrip
+          images={stripImages}
+          currentIndex={currentImageIndex}
+          onThumbnailClick={setCurrentImageIndex}
+          isPremium={false}
+        />
         <NavigationTabs activeTab={activeTab} onTabChange={setActiveTab} />
       </div>
 
       {/* Scrollable Content */}
       <div className="flex-1 overflow-y-auto pb-20">
         {/* Ranking List */}
-        <RankingList 
-          contents={topRankedContents} 
+        <RankingList
+          contents={topRankedContents}
           onContentClick={onContentClick}
         />
 
         {/* Personalized Section */}
         <HorizontalSection
-          title="당신을 위해 모았어요"
-          subtitle="최근 본 콘텐츠 기반 추천"
+          title="너가 좋아할 것 같아서 모아봤어"
+          subtitle=""
           contents={recommendedContents}
           onContentClick={onContentClick}
         />

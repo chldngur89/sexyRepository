@@ -158,10 +158,16 @@
     font-feature-settings: var(--default-font-feature-settings, normal);
     font-variation-settings: var(--default-font-variation-settings, normal);
     -webkit-tap-highlight-color: transparent;
+    height: 100%;
+    overscroll-behavior-y: none;
   }
 
   body {
     line-height: inherit;
+    height: 100%;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    background-color: #f3f4f6; /* bg-gray-100 to match App.tsx */
   }
 
   hr {

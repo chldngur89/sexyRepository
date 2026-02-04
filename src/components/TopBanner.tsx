@@ -4,30 +4,22 @@ import { Sparkles } from 'lucide-react';
 
 export function TopBanner() {
   return (
-    <div className="relative h-64 bg-gradient-to-br from-purple-600 to-pink-600 overflow-hidden">
-      <ImageWithFallback
-        src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=800&q=80"
-        alt="AI Generated Art"
-        className="w-full h-full object-cover opacity-80"
-      />
-      
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-      
-      {/* Content */}
-      <div className="absolute bottom-0 left-0 right-0 p-4">
-        <div className="flex items-center gap-2 mb-2">
-          <Sparkles className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-          <span className="text-xs font-bold text-yellow-400 uppercase tracking-wide">
-            AI 추천
-          </span>
-        </div>
-        <h2 className="text-xl font-bold text-white mb-1">
-          이번 주 최고의 AI 아트
-        </h2>
-        <p className="text-sm text-gray-200">
-          100만+ 조회수 돌파한 화제작
-        </p>
+    <div className="relative h-[60px] bg-[#E91E63] flex items-center justify-between px-4">
+      {/* Left: LOGO */}
+      <h1 className="text-white text-xl font-extrabold tracking-wide">LOGO</h1>
+
+      {/* Right: Icons */}
+      <div className="flex items-center gap-4">
+        <button className="text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </button>
+        <button className="text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
       </div>
     </div>
   );

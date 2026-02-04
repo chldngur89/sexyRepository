@@ -14,9 +14,10 @@ import type { ContentItem } from '../App';
 
 interface MainPageProps {
   onContentClick: (content: ContentItem) => void;
+  onNavigate: (page: 'main' | 'search' | 'favorites' | 'mypage') => void;
 }
 
-export function MainPage({ onContentClick }: MainPageProps) {
+export function MainPage({ onContentClick, onNavigate }: MainPageProps) {
   const [activeTab, setActiveTab] = useState<'ranking' | 'new' | 'category' | 'viewed'>('ranking');
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -83,7 +84,7 @@ export function MainPage({ onContentClick }: MainPageProps) {
       </div>
 
       {/* Fixed Bottom Navigation */}
-      <BottomNav />
+      <BottomNav currentPage="main" onNavigate={onNavigate} />
     </div>
   );
 }

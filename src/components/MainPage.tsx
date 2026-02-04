@@ -29,12 +29,12 @@ export function MainPage({ onContentClick }: MainPageProps) {
   const stripImages = mockContents[0]?.images || [];
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-[100dvh]">
       {/* Fixed Header */}
       <div className="flex-shrink-0">
         <StatusBar />
         <TopBanner />
-        <HeroBanner />
+        <HeroBanner imageUrl={stripImages[currentImageIndex]} />
         <ThumbnailStrip
           images={stripImages}
           currentIndex={currentImageIndex}
@@ -45,7 +45,7 @@ export function MainPage({ onContentClick }: MainPageProps) {
       </div>
 
       {/* Scrollable Content */}
-      <div className="flex-1 overflow-y-auto pb-20">
+      <div className="flex-1 overflow-y-auto pb-20 min-h-0">
         {/* Ranking List */}
         <RankingList
           contents={topRankedContents}

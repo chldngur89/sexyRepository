@@ -1,5 +1,4 @@
 import { getDriveImages } from './src/lib/drive';
-import { getDriveImages } from './src/lib/drive';
 import fs from 'fs';
 import path from 'path';
 

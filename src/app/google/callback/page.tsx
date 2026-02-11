@@ -10,7 +10,7 @@ function CallbackContent() {
     const [status, setStatus] = useState('Initializing...');
     const [tokens, setTokens] = useState<any>(null);
 
-    const fetchedRef = import('react').useRef(false);
+    const fetchedRef = useRef(false);
 
     useEffect(() => {
         if (fetchedRef.current) return; // Prevent double execution
@@ -26,11 +26,18 @@ function CallbackContent() {
         fetchedRef.current = true;
         setStatus('Exchanging code for tokens...');
 
+        // Dynamic redirect URI based on current location
+        // This ensures the backend uses the exact same URI that Google redirected to
+        const currentRedirectUri = `${window.location.origin}/google/callback`;
+
         // Call our own API to exchange code for tokens
         fetch('/api/auth/google/exchange', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ code }),
+            body: JSON.stringify({
+                code,
+                redirect_uri: currentRedirectUri
+            }),
         })
             .then(async (res) => {
                 const data = await res.json();
@@ -39,8 +46,6 @@ function CallbackContent() {
                     setStatus('Success!');
                 } else {
                     setStatus(`Failed to exchange code: ${data.error || 'Unknown error'}`);
-                    // Allow retrying if it failed (optional, but good for debugging)
-                    // fetchedRef.current = false; 
                 }
             })
             .catch((err) => {

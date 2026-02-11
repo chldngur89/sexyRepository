@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Stitch (Antigravity) Photo Gallery
 
-## Getting Started
+## Project Overview
+Stitch is a premium photo gallery application designed for high-quality visual content discovery, collecting, and sharing. The application focuses on a sleek, immersive UI/UX with smooth transitions and a modern aesthetic.
 
-First, run the development server:
+## Business Flow & User Journey
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1.  **Onboarding & Authentication**
+    *   **Login/Sign Up**: Users access the platform via email or social login (Google, Apple).
+    *   **Goal**: Quick and secure access to a personalized experience.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2.  **Discovery (Home)**
+    *   **Main Feed**: Users browse a curated timeline of high-quality photos.
+    *   **Categories**: Filter by 'Real-time Ranking', 'New', 'Recommendations', etc.
+    *   **Interaction**: Users can view view-counts, likes, and pro-status of creators.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3.  **Search & Exploration**
+    *   **Search Overlay**: Users can search for specific content or tags.
+    *   **Discover Tab**: Explore new trends and creators.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4.  **Content Engagement (Detail View)**
+    *   **Photo Detail**: deeply engaging view of a single photo with related metadata.
+    *   **Actions**: 
+        *   **Like/Favorite**: Save to Wishlist/Favorites.
+        *   **Download**: Download high-resolution assets (with progress indication).
+        *   **Share**: Share content externally.
 
-## Learn More
+5.  **Personalization (My Page/Wishlist)**
+    *   **Profile**: Manage user details and settings.
+    *   **Wishlist**: Access saved/liked photos for easy reference.
 
-To learn more about Next.js, take a look at the following resources:
+6.  **Monetization (Payment)**
+    *   **Checkout**: Process for purchasing premium content or subscriptions.
+    *   **Pro Access**: Verification and distinct badging for pro users.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Key Features
+*   **Immersive Gallery**: Masonry or grid layouts optimized for visual impact.
+*   **Dark/Light Mode**: Seamless transition between themes.
+*   **Responsive Design**: Mobile-first approach scaling to larger screens.
+*   **Micro-interactions**: Subtle animations for likes, transitions, and loading states.

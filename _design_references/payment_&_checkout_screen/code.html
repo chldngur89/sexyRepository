@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Payment &amp; Checkout</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#5912a1",
+                        "background-light": "#f7f6f8",
+                        "background-dark": "#191121",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+        }
+        input[type="radio"]:checked + div {
+            border-color: #5912a1;
+            background-color: rgba(89, 18, 161, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white antialiased">
+<div class="flex flex-col min-h-screen max-w-md mx-auto relative overflow-hidden">
+<!-- Top App Bar -->
+<header class="flex items-center justify-between p-6 pt-8">
+<button class="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 dark:bg-white/10 text-slate-900 dark:text-white">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+</button>
+<h1 class="text-lg font-bold tracking-tight">Unlock High Resolution</h1>
+<div class="w-10"></div> <!-- Spacer for centering -->
+</header>
+<!-- Main Content Scroll Area -->
+<main class="flex-1 px-6 pb-32">
+<!-- Product Preview Card -->
+<section class="mt-4">
+<div class="rounded-xl overflow-hidden bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 shadow-sm">
+<div class="flex p-4 gap-4">
+<div class="w-24 h-24 rounded-lg bg-cover bg-center shrink-0" data-alt="Night cityscape of Tokyo with neon lights" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCydHewCBuHlTUaSWMDEBcqLXr6r36m-YOKIB-hM7ThHFmk7QrqQic6O5iG7Nvo9J3LHFGMNR3MrGB1eIDGcaWEue3KJshTLtudsCGhQCVVdYbL8F7Sb79UekqFTNMKcnqGAQFBXpyRUdibAE7FjFvAk8AJlx9jgYn97OZ-Odf53IqB5GBQ-aYzT7iZmHD9m3EFX2VvvC9lkSS2Tq-ezmrqxaFIl0elEQuK_aCS3FkTCW0JL2w9jic4iRZUo_7uBmIue_vGgF7i9Mk')">
+</div>
+<div class="flex flex-col justify-center gap-1">
+<span class="text-xs font-semibold text-primary uppercase tracking-wider">Premium Photo</span>
+<h2 class="text-lg font-bold">Neon Tokyo</h2>
+<p class="text-sm text-slate-500 dark:text-slate-400">by @shotbyalex</p>
+<div class="mt-1">
+<span class="bg-primary/10 text-primary text-sm font-bold px-3 py-1 rounded-full">$1.99</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Payment Methods -->
+<section class="mt-8">
+<h3 class="text-sm font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-4 px-1">Payment Method</h3>
+<div class="flex flex-col gap-3">
+<!-- Apple Pay -->
+<label class="relative cursor-pointer group">
+<input checked="" class="sr-only peer" name="payment" type="radio"/>
+<div class="flex items-center justify-between p-4 rounded-xl border border-slate-200 dark:border-white/10 peer-checked:border-primary peer-checked:ring-1 peer-checked:ring-primary transition-all duration-200">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-white/10">
+<span class="material-symbols-outlined">ios</span>
+</div>
+<span class="font-medium">Apple Pay</span>
+</div>
+<div class="w-5 h-5 rounded-full border-2 border-slate-300 dark:border-white/20 peer-checked:bg-primary flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-white opacity-0 peer-checked:opacity-100"></div>
+</div>
+</div>
+</label>
+<!-- Credit Card -->
+<label class="relative cursor-pointer group">
+<input class="sr-only peer" name="payment" type="radio"/>
+<div class="flex items-center justify-between p-4 rounded-xl border border-slate-200 dark:border-white/10 peer-checked:border-primary peer-checked:ring-1 peer-checked:ring-primary transition-all duration-200">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-white/70">
+<span class="material-symbols-outlined text-2xl">credit_card</span>
+</div>
+<div class="flex flex-col">
+<span class="font-medium">Credit Card</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">•••• 4242</span>
+</div>
+</div>
+<div class="w-5 h-5 rounded-full border-2 border-slate-300 dark:border-white/20 flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-white opacity-0"></div>
+</div>
+</div>
+</label>
+<!-- PayPal -->
+<label class="relative cursor-pointer group">
+<input class="sr-only peer" name="payment" type="radio"/>
+<div class="flex items-center justify-between p-4 rounded-xl border border-slate-200 dark:border-white/10 peer-checked:border-primary peer-checked:ring-1 peer-checked:ring-primary transition-all duration-200">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-white/10">
+<span class="material-symbols-outlined text-2xl">payments</span>
+</div>
+<span class="font-medium">PayPal</span>
+</div>
+<div class="w-5 h-5 rounded-full border-2 border-slate-300 dark:border-white/20 flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-white opacity-0"></div>
+</div>
+</div>
+</label>
+</div>
+</section>
+<!-- Quick Pay Info (if card linked) -->
+<section class="mt-8 p-4 rounded-xl bg-primary/5 border border-primary/20 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">verified_user</span>
+</div>
+<div>
+<p class="text-sm font-bold">Quick Pay Enabled</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Secure 1-tap checkout</p>
+</div>
+</div>
+<button class="text-xs font-bold text-primary hover:underline">Change</button>
+</section>
+</main>
+<!-- Fixed Bottom Section -->
+<footer class="fixed bottom-0 left-0 right-0 max-w-md mx-auto glass-effect border-t border-slate-200 dark:border-white/10 p-6 flex flex-col gap-4">
+<div class="flex justify-between items-center px-1">
+<span class="text-slate-500 dark:text-slate-400 font-medium">Total Amount</span>
+<span class="text-xl font-bold">$1.99</span>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-full flex items-center justify-center gap-2 transition-transform active:scale-95 shadow-lg shadow-primary/25">
+<span class="material-symbols-outlined text-xl">lock</span>
+                Confirm &amp; Pay
+            </button>
+<p class="text-[10px] text-center text-slate-400 dark:text-slate-500 px-4">
+                By clicking "Confirm &amp; Pay", you agree to our Terms of Service. Purchases are final and non-refundable.
+            </p>
+</footer>
+</div>
+<!-- Background Decoration -->
+<div class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none overflow-hidden">
+<div class="absolute -top-20 -right-20 w-80 h-80 bg-primary/10 rounded-full blur-[100px]"></div>
+<div class="absolute bottom-20 -left-20 w-60 h-60 bg-primary/5 rounded-full blur-[80px]"></div>
+</div>
+</body></html>

@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect, useState, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 function CallbackContent() {
@@ -10,7 +10,10 @@ function CallbackContent() {
     const [status, setStatus] = useState('Initializing...');
     const [tokens, setTokens] = useState<any>(null);
 
+    const fetchedRef = import('react').useRef(false);
+
     useEffect(() => {
+        if (fetchedRef.current) return; // Prevent double execution
         if (error) {
             setStatus(`Error from Google: ${error}`);
             return;
@@ -20,6 +23,7 @@ function CallbackContent() {
             return;
         }
 
+        fetchedRef.current = true;
         setStatus('Exchanging code for tokens...');
 
         // Call our own API to exchange code for tokens
@@ -35,6 +39,8 @@ function CallbackContent() {
                     setStatus('Success!');
                 } else {
                     setStatus(`Failed to exchange code: ${data.error || 'Unknown error'}`);
+                    // Allow retrying if it failed (optional, but good for debugging)
+                    // fetchedRef.current = false; 
                 }
             })
             .catch((err) => {

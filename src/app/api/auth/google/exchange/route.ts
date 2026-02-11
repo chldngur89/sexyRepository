@@ -18,6 +18,15 @@ export async function POST(req: NextRequest) {
             ? `${process.env.NEXT_PUBLIC_APP_URL}/google/callback`
             : 'http://localhost:3000/google/callback';
 
+        if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
+            console.error('Missing Google Client ID or Secret');
+            return NextResponse.json({ error: 'Server configuration error: Missing Credentials' }, { status: 500 });
+        }
+
+        console.log('Using Redirect URI:', redirectUri);
+        console.log('Client ID present:', !!process.env.GOOGLE_CLIENT_ID);
+        console.log('Client Secret present:', !!process.env.GOOGLE_CLIENT_SECRET);
+
         const oauth2Client = new google.auth.OAuth2(
             process.env.GOOGLE_CLIENT_ID,
             process.env.GOOGLE_CLIENT_SECRET,
@@ -30,6 +39,10 @@ export async function POST(req: NextRequest) {
 
     } catch (error: any) {
         console.error('Error exchanging OAuth code:', error);
-        return NextResponse.json({ error: error.message || 'Failed to exchange code' }, { status: 500 });
+        console.error('Error details:', error.response?.data);
+        return NextResponse.json({
+            error: error.message || 'Failed to exchange code',
+            details: error.response?.data
+        }, { status: 500 });
     }
 }
